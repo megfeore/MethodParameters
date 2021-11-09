@@ -29,10 +29,13 @@ namespace MethodParameters
             CanVote(age);
 
             //get values for question 3 and send them to the WelcomeUser method
-
+            string insertName = userInput.Text;
+            string insertPin = pinInput.Text;
+            WelcomeUser(insertName, insertPin);
 
             //get value for question 4 and send it to the InchToCm method
-
+            double inchInput = Convert.ToDouble(inchesInput.Text);
+            InchToCm(inchInput);
 
         }
 
@@ -50,7 +53,9 @@ namespace MethodParameters
 
         public void Add(int x, int y)
         {
+            int sum = x + y;
 
+            q1Output.Text = $"{x} + {y} = {sum}";
         }
 
         /// 2. Create a method called CanVote, that accepts an 
@@ -67,7 +72,14 @@ namespace MethodParameters
 
         public void CanVote(int voterAge)
         {
-
+            if(voterAge >= 18)
+            {
+                q2Output.Text = $"You can vote!";
+            }
+            else
+            {
+                q2Output.Text = $"You can't vote";
+            }
         }
 
         /// 3. Create a method called WelcomeUser, that accepts 2
@@ -83,7 +95,17 @@ namespace MethodParameters
         /// Input: Mr. T, 1234
         /// Welcome Mr. T
 
-
+        public void WelcomeUser(string name, string pin)
+        {
+            if (pin == "1234")
+            {
+                q3Output.Text = $"Welcome {name}";
+            } 
+            else
+            {
+                q3Output.Text = $"Incorrect PIN";
+            }
+        }
 
         /// 4. Create a method called InchToCm, that accepts a double 
         /// parameter, inches, converts it to cm, (*2.54), and displays
@@ -97,6 +119,12 @@ namespace MethodParameters
         /// Input: 3.4
         /// 3.4 inches is 8.636 cms
 
+        public void InchToCm(double convert)
+        {
+            double cent = convert * 2.54;
+
+            q4Output.Text = $"{convert} inches is {cent} cm";
+        }
 
 
     }
